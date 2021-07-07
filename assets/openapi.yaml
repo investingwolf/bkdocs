@@ -3222,3 +3222,38 @@ paths:
       operationId: get_positions
       security:
         - BasicAuth: []
+  '/trading/accounts/{account_id}/positions/{symbol}':
+    parameters:
+      - $ref: '#/components/parameters/AccountID'
+      - name: symbol
+        required: true
+        in: path
+        schema:
+          type: string
+        description: The symbol or asset_id
+      - name: qty
+        in: query
+        schema:
+          type: string
+        description: The number of shares to liquidate
+      - name: percentage
+        in: query
+        schema:
+          type: string
+        description: Percentage of position you want to liquidate
+    delete:
+      summary: Closes the account’s open position for the given symbol
+      tags:
+        - Trading
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderObject'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      operationId: close_position
+      security:
+        - BasicAuth: []

@@ -1615,6 +1615,30 @@ components:
           type: string
         change_today:
           type: string
+    PortfolioHistory:
+      description: Portfolio history
+      type: object
+      properties:
+        timestamp:
+          type: array
+          items:
+            type: number
+        equity:
+          type: array
+          items:
+            type: number
+        profit_loss:
+          type: array
+          items:
+            type: number
+        profit_loss_pct:
+          type: array
+          items:
+            type: number
+        base_value:
+          type: number
+        timeframe:
+          type: string
   responses:
     Forbidden:
       description: Request is forbidden
@@ -3255,5 +3279,42 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
       operationId: close_position
+      security:
+        - BasicAuth: []
+  '/trading/accounts/{account_id}/accounts/portfolio/history':
+    parameters:
+      - $ref: '#/components/parameters/AccountID'
+      - name: period
+        in: query
+        schema:
+          type: string
+        description: The duration of the data
+      - name: timeframe
+        in: query
+        schema:
+          type: string
+        description: The resolution of time window
+      - name: date_end
+        in: query
+        schema:
+          type: string
+        description: The date the data is returned up to, in “YYYY-MM-DD” format
+      - name: extended_hours
+        in: query
+        schema:
+          type: boolean
+        description: If true, include extended hours in the result
+    get:
+      summary: Returns timeseries data about equity and profit/loss (P/L) of the account in requested timespan
+      tags:
+        - Trading
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PortfolioHistory'
+      operationId: get_portfolio_history
       security:
         - BasicAuth: []

@@ -3281,7 +3281,7 @@ paths:
       operationId: close_position
       security:
         - BasicAuth: []
-  '/trading/accounts/{account_id}/accounts/portfolio/history':
+  '/trading/accounts/{account_id}/account/portfolio/history':
     parameters:
       - $ref: '#/components/parameters/AccountID'
       - name: period

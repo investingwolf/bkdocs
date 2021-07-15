@@ -2183,21 +2183,23 @@ paths:
             type: string
       responses:
         '200':
-          description: Returns the calendar object
+          description: Returns an array of calendar objects
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  date:
-                    type: string
-                    example: '2021-04-06'
-                  open:
-                    type: string
-                    example: '09:30'
-                  close:
-                    type: string
-                    example: '16:00'
+                type: array
+                items:
+                  type: object
+                  properties:
+                    date:
+                      type: string
+                      example: '2021-04-06'
+                    open:
+                      type: string
+                      example: '09:30'
+                    close:
+                      type: string
+                      example: '16:00'
   /clock:
     get:
       security:

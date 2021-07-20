@@ -1805,10 +1805,9 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                document_upload:
-                  $ref: '#/components/schemas/DocumentUpload'
+              type: array
+              items:
+                $ref: '#/components/schemas/DocumentUpload'
       responses:
         '204':
           description: Success (No Content)

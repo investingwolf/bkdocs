@@ -1795,7 +1795,7 @@ paths:
       security:
         - BasicAuth: []
       tags:
-        - Accounts
+        - Documents
       summary: Upload a document to an already existing account
       operationId: post_document_upload
       parameters:

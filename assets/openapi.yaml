@@ -3282,7 +3282,7 @@ paths:
                 $ref: '#/components/schemas/OrderObject'
         '404':
           $ref: '#/components/responses/NotFound'
-      operationId: close_position
+      operationId: delete_position
       security:
         - BasicAuth: []
   '/trading/accounts/{account_id}/account/portfolio/history':

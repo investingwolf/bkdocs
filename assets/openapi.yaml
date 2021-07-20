@@ -2511,7 +2511,7 @@ paths:
           description: Bad Request
         '409':
           description: Conflict
-      operationId: post_recipient_banks
+      operationId: post_recipient_bank
   '/accounts/{account_id}/recipient_banks/{bank_id}':
     delete:
       security:

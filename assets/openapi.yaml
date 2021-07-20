@@ -1672,6 +1672,7 @@ paths:
       tags:
         - Accounts
       summary: Retrieve all accounts
+      operationId: get_accounts
       parameters:
         - name: query
           in: query
@@ -1698,6 +1699,7 @@ paths:
       tags:
         - Accounts
       summary: Create an account
+      operationId: post_account
       requestBody:
         required: true
         content:
@@ -1795,6 +1797,7 @@ paths:
       tags:
         - Accounts
       summary: Upload a document to an already existing account
+      operationId: post_document_upload
       parameters:
         - $ref: '#/components/parameters/AccountID'
       requestBody:
@@ -2011,7 +2014,7 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '404':
           $ref: '#/components/responses/NotFound'
-      operationId: post_orders
+      operationId: post_order
     delete:
       security:
         - BasicAuth: []
@@ -2130,6 +2133,7 @@ paths:
       tags:
         - Assets
       summary: Retrieve an asset by UUID
+      operationId: get_asset_by_id
       description: 'Returns the requested asset, if found'
       parameters:
         - name: asset_id
@@ -2150,6 +2154,7 @@ paths:
       tags:
         - Assets
       summary: Retrieve an asset by symbol
+      operationId: get_asset_by_symbol
       description: 'Returns the requested asset, if found'
       parameters:
         - name: symbol
@@ -2170,6 +2175,7 @@ paths:
       tags:
         - Calendar
       summary: Query market calendar
+      operationId: get_calendar
       parameters:
         - name: start
           description: The first date to retrieve data for. (Inclusive)
@@ -2207,6 +2213,7 @@ paths:
       tags:
         - Clock
       summary: Query market clock
+      operationId: get_clock
       responses:
         '200':
           description: The current market's timestamp
@@ -2232,6 +2239,7 @@ paths:
       security:
         - BasicAuth: []
       summary: Return a list of account documents.
+      operationId: get_documents
       tags:
         - Documents
       description: |
@@ -2288,6 +2296,7 @@ paths:
       security:
         - BasicAuth: []
       summary: Download a document file that belongs to an account.
+      operationId: get_document_download
       tags:
         - Documents
       description: |
@@ -2606,7 +2615,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransferResource'
-      operationId: post_transfers
+      operationId: post_transfer
   /journals:
     get:
       security:
@@ -2994,6 +3003,7 @@ paths:
       tags:
         - Accounts
       summary: Retrieve account activities
+      operationId: get_account_activities
       parameters:
         - name: date
           in: query
@@ -3083,6 +3093,7 @@ paths:
           schema:
             type: string
       summary: Retrieve specific account activities
+      operationId: get_account_activities_by_type
       responses:
         '200':
           description: Success
@@ -3120,7 +3131,7 @@ paths:
           description: Comma-separated status values
     post:
       summary: Create an ACH Relationship
-      operationId: post_ach_relationships
+      operationId: post_ach_relationship
       responses:
         '200':
           description: Success
